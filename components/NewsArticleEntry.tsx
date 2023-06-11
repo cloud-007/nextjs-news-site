@@ -13,7 +13,7 @@ const NewsArticleEntry = ({article: {title, description, url, urlToImage}}: News
 
     return (
         <>
-            <a href={url}>
+            <a href={url} target={"_blank"}>
                 <Card className="h-100">
                     <Card.Img
                         variant="top"
