@@ -1,6 +1,8 @@
 import Head from "next/head";
 import {GetServerSideProps} from "next";
 import {NewsApiResponse, NewsArticle} from "@/models/NewsArticle";
+import NewsArticleGrid from "@/components/NewsArticleGrid";
+import {Alert} from "react-bootstrap";
 
 interface BreakingNewsPageProps {
     newsArticles: NewsArticle[],
@@ -25,13 +27,11 @@ export default function BreakingNewsPage({newsArticles}: BreakingNewsPageProps) 
             </Head>
             <main>
                 <h1>Breaking News</h1>
-                <ul>
-                    {newsArticles.map((article) => (
-                        <li key={article.url}>
-                            <a href={article.url}>{article.title}</a>
-                        </li>
-                    ))}
-                </ul>
+                <Alert>
+                    This page uses <strong>getServerSideProps</strong> to fetch news articles on each request.
+                    This allows search engine to crawl the page and <strong>improves SEO</strong>
+                </Alert>
+                <NewsArticleGrid articles={newsArticles}/>
             </main>
         </>
     )
